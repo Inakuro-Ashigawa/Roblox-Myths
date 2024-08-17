@@ -2,7 +2,8 @@ static var initialized:Bool = false;
 public static var isEncoreMode:Bool = false;
 
 static var redirectStates:Map<FlxState, String> = [
-	TitleState => 'Myths/MythsTitle'
+	TitleState => 'Myths/MythsTitle',
+	MainMenuState => 'Myths/MythsMain',
 ];
 
 function preStateSwitch() {
