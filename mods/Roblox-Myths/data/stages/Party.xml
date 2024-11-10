@@ -1,0 +1,13 @@
+<!DOCTYPE codename-engine-stage>
+<stage folder="stages/Party/" zoom="0.7">
+	<gf/>
+	<sprite x="-1446" y="-870" sprite="Wall and floor" name="Wall and floor"/>
+	<sprite x="-1466" y="-829" sprite="Cake" name="Cake"/>
+	<dad x="-1098" y="-593"/>
+	<bf x="882" camxoffset="-400" y="93" camyoffset="-200"/>
+	<combo x="20" y="-249"/>
+	<sprite x="-1456" y="-868" sprite="Placeholder crowd" scrollx="0.9" scrolly="0.85" name="Placeholder crowd"/>
+	<sprite x="-1464" y="-832" sprite="Candle" name="Candle"/>
+	<sprite x="-1469" y="-867" sprite="Candle light" name="Candle light"/>
+	<sprite x="-1489" y="-870" sprite="Banner" name="Banner"/>
+</stage>

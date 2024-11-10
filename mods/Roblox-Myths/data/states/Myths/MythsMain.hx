@@ -1,10 +1,12 @@
+import funkin.editors.EditorPicker;
 import flixel.text.FlxTextBorderStyle;
 
 var peeps = ['clown', 'john doe', 'scarey', 'obama', 'scary2', 'err', 'scpguy','zasjwl909','inakuro'];
 var users = ['sigma','john doe','sigma','janc_k','sigma','hotline','ROBLOX34', 'zasjwl909','inakuro'];
+var songs = ['John','666'];
 var random:Float =  FlxG.random.float(0, 1);
 var noob:FlxSprite;
-var Hitbox,Hitbox2,Hitbox3,Hitbox4:FlxSprite;
+var Hitbox,Hitbox2,Hitbox3,Hitbox4,Hitbox5,Hitbox6,HitboxSong1,HitboxSong2,icon:FlxSprite;
 var peoples:FlxSpriteGroup;
 var users2:FlxSpriteGroup;
 var scrollSpeed:Float = 5.0;
@@ -34,7 +36,6 @@ function create() {
         noob.scale.set(.15, .15);
         add(noob);
     }
-
     for (i in 0...peeps.length) {
         pep = new FlxSprite(-500 + (140 * i), -260).loadGraphic(Paths.image('menus/main/' + peeps[i]));
         pep.scale.set(.08, .08);
@@ -97,13 +98,58 @@ function create() {
     Hitbox4.scrollFactor;
     Hitbox4.visible = false;
     add(Hitbox4);
+
+    Hitbox5 = new FlxSprite(100,320);
+    Hitbox5.makeGraphic(1200, 150, 0xFFFF0000);
+    Hitbox5.scrollFactor;
+    Hitbox5.visible = false;
+    add(Hitbox5);
+
+    icon = new FlxSprite(-100,0).loadGraphic(Paths.image('menus/main/icon'));
+    icon.antialiasing = true;
+    add(icon);
+
+    Hitbox6 = new FlxSprite();
+    Hitbox6.makeGraphic(70, 70, 0xFFFF0000);
+    Hitbox6.scrollFactor;
+    Hitbox6.visible = false;
+    add(Hitbox6);
+
+    random = new FlxSprite(-300,0).loadGraphic(Paths.image('menus/main/random'));
+    random.antialiasing = true;
+    add(random);
+
+    Experiences = new FlxText(70, 470);
+    Experiences.setFormat(Paths.font("RBFONT.ttf"), 24, FlxColor.WHITE, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, "center");
+    Experiences.borderSize = 3;
+    add(Experiences);
+    Experiences.antialiasing = true;
+    Experiences.text = "Experiences";
+    
+    for (i in 0...songs.length) {
+        SongImage = new FlxSprite(-430 + (200 * i), -40).loadGraphic(Paths.image('menus/main/songshit/' + songs[i]));
+        SongImage.scale.set(.15, .15);
+        SongImage.ID = i;
+        add(SongImage);
+    }
+    HitboxSong1 = new FlxSprite(125,510);
+    HitboxSong1.makeGraphic(170, 170, 0xFFFF0000);
+    HitboxSong1.scrollFactor;
+    HitboxSong1.visible = false;
+    add(HitboxSong1);
+
+    HitboxSong2 = new FlxSprite(330,510);
+    HitboxSong2.makeGraphic(170, 170, 0xFFFF0000);
+    HitboxSong2.scrollFactor;
+    HitboxSong2.visible = false;
+    add(HitboxSong2);
+
 }
 function update(elapsed:Float) {
     var isOverPep:Bool = false;
 
-    // Check if the mouse is over any of the peeps
-        if (FlxG.mouse.overlaps(peoples)) {
-            isOverPep = true;
+    if (FlxG.mouse.overlaps(Hitbox5)) {
+        isOverPep = true;
     }
 
     if (FlxG.mouse.pressed && isOverPep) {
@@ -126,7 +172,11 @@ function update(elapsed:Float) {
         }
         users2.setPosition(pep.x - 610, 0);
     }
-
+    if (FlxG.keys.justPressed.SEVEN) {
+		openSubState(new EditorPicker());
+		persistentUpdate = false;
+		persistentDraw = true;
+	}
     // Handle other interactions (Hitbox color changes)
     if (FlxG.mouse.overlaps(Hitbox)) {
         games.color = FlxColor.BLUE;
@@ -145,12 +195,22 @@ function update(elapsed:Float) {
     } else {
         create.color = FlxColor.WHITE;
     }
-
     if (FlxG.mouse.overlaps(Hitbox4)) {
         trade.color = FlxColor.BLUE;
     } else {
         trade.color = FlxColor.WHITE;
     }
+    if (FlxG.mouse.overlaps(Hitbox6)){
+        icon.color = 0xFF3A3A3A;
+    }else {
+        icon.color = 0xFFFFFFFF;
+    }
+    if ((FlxG.mouse.justPressed && FlxG.mouse.overlaps(HitboxSong1))) gong();
 }
-function mouseOverlapStuffs(){
+function gong(){
+    camera.fade(FlxColor.BLACK, 0.4); // just use fade bruh
+	PlayState.loadSong("i-here", 'hard');
+	new FlxTimer().start(1, function(tmr:FlxTimer) {
+		FlxG.switchState(new PlayState());
+	});
 }

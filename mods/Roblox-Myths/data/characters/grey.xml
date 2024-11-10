@@ -1,0 +1,14 @@
+<!DOCTYPE codename-engine-character>
+<character y="350" sprite="PlaceHolders/Grey_Assets" scale="3" antialiasing="false" flipX="true" camx="100" camy="30" isPlayer="true" icon="grey" isGF="false">
+	<anim name="idle" anim="Grey_Idle" x="17" y="11" fps="24" loop="false"/>
+	<anim name="singUP" anim="Grey_Up" x="15" y="9" fps="24" loop="false"/>
+	<anim name="singUPmiss" anim="Grey_Miss_Up" x="15" y="9" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="Grey_Down" x="15" y="9" fps="24" loop="false"/>
+	<anim name="singDOWNmiss" anim="Grey_Miss_Down" x="15" y="9" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="Grey_Right" x="15" y="9" fps="24" loop="false"/>
+	<anim name="singRIGHTmiss" anim="Grey_Miss_Right" x="15" y="9" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="Grey_Left" x="15" y="9" fps="24" loop="false"/>
+	<anim name="singLEFTmiss" anim="Grey_Miss_Left" x="15" y="9" fps="24" loop="false"/>
+	<anim name="freak" anim="Grey_Talk" x="15" y="9" fps="24" loop="false"/>
+	<anim name="alone" anim="Grey_Talk2" x="15" y="9" fps="24" loop="false"/>
+</character>
